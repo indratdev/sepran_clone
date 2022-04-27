@@ -22,6 +22,13 @@ class Menus {
     BottomMenu(title: 'Setting', icon: Icons.settings),
   ];
 
+  List<Widget> allScreen = <Widget>[
+    HomeScreen(),
+    HutangScreen(),
+    RekapScreen(),
+    SettingScreen(),
+  ];
+
   List<BottomNavigationBarItem> getBottomMenu(List<BottomMenu> tabs) {
     return tabs
         .map(
@@ -32,11 +39,4 @@ class Menus {
         )
         .toList();
   }
-
-  List<Widget> allScreen = <Widget>[
-    HomeScreen(),
-    HutangScreen(),
-    RekapScreen(),
-    SettingScreen(),
-  ];
 }
