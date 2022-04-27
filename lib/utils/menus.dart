@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sepran_clone/Screens/home_screen/home_screen.dart';
+import 'package:sepran_clone/Screens/hutang_screen/hutang_screen.dart';
+import 'package:sepran_clone/Screens/rekap_screen/rekap_screen.dart';
+import 'package:sepran_clone/Screens/setting_screen/setting_screen.dart';
 
 class BottomMenu {
   String title;
@@ -28,4 +32,11 @@ class Menus {
         )
         .toList();
   }
+
+  List<Widget> allScreen = <Widget>[
+    HomeScreen(),
+    HutangScreen(),
+    RekapScreen(),
+    SettingScreen(),
+  ];
 }
