@@ -1,52 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:sepran_clone/utils/menus.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final menu = Menus();
+  int _index = 0;
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('data'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(),
       body: Stack(
         children: <Widget>[],
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              semanticLabel: 'Data Harian',
-            ),
-            label: 'Data Harian',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.money,
-              semanticLabel: 'Hutang',
-            ),
-            label: 'Hutang',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.grade,
-              semanticLabel: 'Rekap',
-            ),
-            label: 'Rekap',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-              semanticLabel: 'Setting',
-            ),
-            label: 'Setting',
-          ),
-        ],
-        currentIndex: 0,
-        selectedItemColor: Colors.amber[800],
+        items: menu.getBottomMenu(menu.items),
+        currentIndex: _index,
+        selectedItemColor: Colors.blue,
         onTap: (index) {},
       ),
     );
