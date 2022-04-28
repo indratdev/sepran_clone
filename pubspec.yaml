@@ -33,6 +33,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  hawk_fab_menu: ^1.1.2
   intl: ^0.17.0
 
 dev_dependencies:
