@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sepran_clone/Screens/splash_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sepran_clone/state_management/pages_bloc/pages_bloc.dart';
 import 'package:sepran_clone/utils/routes.dart';
 
 void main() {
@@ -11,10 +12,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: Routes().getRoutes,
-      initialRoute: '/splash',
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => PagesBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: Routes().getRoutes,
+        initialRoute: '/splash',
+      ),
     );
   }
 }
