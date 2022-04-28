@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(1950),
-      lastDate: DateTime.now(),
+      lastDate: DateTime(2100),
     ).then((value) {
       //then usually do the future job
       if (value == null) {

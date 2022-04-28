@@ -10,7 +10,7 @@ class floatingActionButtonHawk extends StatelessWidget {
   Widget build(BuildContext context) {
     return HawkFabMenu(
       icon: AnimatedIcons.add_event,
-      body: Text('center of screen'),
+      body: Container(),
       items: [
         HawkFabMenuItem(
           label: 'Pengeluaran',
