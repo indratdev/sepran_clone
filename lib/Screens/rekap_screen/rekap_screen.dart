@@ -9,7 +9,8 @@ class RekapScreen extends StatefulWidget {
 
 class _RekapScreenState extends State<RekapScreen>
     with TickerProviderStateMixin {
-  late TabController _tabController = TabController(length: 2, vsync: this);
+  late final TabController _tabController =
+      TabController(length: 2, vsync: this);
   bool isMonthly = true;
 
   @override
@@ -37,8 +38,8 @@ class _RekapScreenState extends State<RekapScreen>
       ),
       body: Column(
         children: <Widget>[
-          Container(
-            color: Colors.blue,
+          SizedBox(
+            // color: Colors.blue,
             height: MediaQuery.of(context).size.height / 13,
             child: TabBar(
               onTap: (value) {

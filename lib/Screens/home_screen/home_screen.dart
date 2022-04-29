@@ -41,9 +41,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: floatingActionButtonHawk(),
+        floatingActionButton: floatingActionButtonHawk(type: 'dataHarian'),
         body: Container(
-          color: Colors.white,
+          color: Theme.of(context).primaryColorDark,
           child: Stack(
             children: <Widget>[
               // mulai container tanggal
@@ -53,9 +53,10 @@ class HomeScreen extends StatelessWidget {
                 left: 0,
                 child: Container(
                   height: MediaQuery.of(context).size.height / 8,
-                  decoration: const BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.only(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context)
+                        .primaryColor, //Colors.blue, //Theme.of(context).primaryColor,
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(15),
                       bottomRight: Radius.circular(15),
                     ),
@@ -116,7 +117,8 @@ class HomeScreen extends StatelessWidget {
                   margin: const EdgeInsets.only(left: 10, right: 10),
                   height: MediaQuery.of(context).size.height / 12,
                   decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
+                      color: Theme.of(context)
+                          .primaryColorDark, //Colors.grey.shade300,
                       borderRadius: BorderRadius.circular(8),
                       boxShadow: [
                         BoxShadow(
@@ -132,7 +134,11 @@ class HomeScreen extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text('Pemasukan'),
+                          Text(
+                            'Pemasukan',
+                            // style: TextStyle(
+                            //     color: Theme.of(context).primaryColorDark),
+                          ),
                           Text(
                             '0.00',
                             style: TextStyle(
@@ -147,9 +153,9 @@ class HomeScreen extends StatelessWidget {
                           Text('Pengeluaran'),
                           Text(
                             '0.00',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
+                            // style: TextStyle(
+                            //   color: Colors.black,
+                            // ),
                           ),
                         ],
                       ),
@@ -159,9 +165,9 @@ class HomeScreen extends StatelessWidget {
                           Text('Selisih'),
                           Text(
                             '0.00',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
+                            // style: TextStyle(
+                            //   color: Colors.black,
+                            // ),
                           ),
                         ],
                       ),
@@ -172,32 +178,41 @@ class HomeScreen extends StatelessWidget {
               // end container detail
               // mulai container detail item
               Positioned(
-                top: topContainerDetail + 60,
+                top: topContainerDetail + 55,
                 left: leftRightContainerDetail + 10,
                 right: leftRightContainerDetail + 10,
                 bottom: 0,
                 child: SizedBox(
-                  child: ListView.builder(
-                    itemCount: 200,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        leading: Icon(Icons.badge),
-                        title: Text('title'),
-                        subtitle: Text('Subtitle'),
-                        iconColor: Colors.red,
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Text('10.000'),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 10,
-                              color: Colors.grey,
-                            )
-                          ],
-                        ),
-                      );
-                    },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(5),
+                        topRight: Radius.circular(5),
+                      ),
+                      color: Theme.of(context).primaryColorDark,
+                    ),
+                    child: ListView.builder(
+                      itemCount: 200,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          leading: Icon(Icons.badge),
+                          title: Text('title'),
+                          subtitle: Text('Subtitle'),
+                          iconColor: Colors.red,
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Text('10.000'),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                size: 10,
+                                color: Colors.grey,
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),

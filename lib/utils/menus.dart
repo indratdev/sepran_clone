@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sepran_clone/Screens/home_screen/home_screen.dart';
 import 'package:sepran_clone/Screens/hutang_screen/hutang_screen.dart';
 import 'package:sepran_clone/Screens/rekap_screen/rekap_screen.dart';
@@ -16,9 +17,9 @@ class BottomMenu {
 
 class Menus {
   List<BottomMenu> items = [
-    BottomMenu(title: 'Data Harian', icon: Icons.home),
-    BottomMenu(title: 'Hutang', icon: Icons.money),
-    BottomMenu(title: 'Rekap', icon: Icons.book),
+    BottomMenu(title: 'Data Harian', icon: FontAwesomeIcons.wallet),
+    BottomMenu(title: 'Hutang', icon: FontAwesomeIcons.moneyBill),
+    BottomMenu(title: 'Rekap', icon: FontAwesomeIcons.chartSimple),
     BottomMenu(title: 'Setting', icon: Icons.settings),
   ];
 
