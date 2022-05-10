@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sepran_clone/state_management/dark_bloc/darktheme_bloc.dart';
@@ -6,7 +7,10 @@ import 'package:sepran_clone/utils/dark_theme.dart';
 import 'package:sepran_clone/utils/routes.dart';
 import 'package:sepran_clone/utils/styles.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 

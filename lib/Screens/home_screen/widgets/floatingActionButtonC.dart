@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hawk_fab_menu/hawk_fab_menu.dart';
+import 'package:sepran_clone/Screens/home_screen/transaksi_screen/transaksi_screen.dart';
 
 class floatingActionButtonHawk extends StatelessWidget {
   String type;
@@ -21,10 +22,13 @@ class floatingActionButtonHawk extends StatelessWidget {
           label: (type == 'dataHarian') ? 'Pengeluaran' : 'Memberi',
           ontap: () {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            // masukin tap progress disini
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   const SnackBar(content: Text('Menu 3 selected')),
-            // );
+            (type == 'dataHarian')
+                ? Navigator.pushNamed(
+                    context,
+                    '/home/transaksi',
+                    arguments: TransaksiScreen(type: 'Pengeluaran'),
+                  )
+                : Navigator.pushNamed(context, '/home/transaksi');
           },
           icon: (type == 'dataHarian')
               ? Icon(Icons.badge)
@@ -33,13 +37,20 @@ class floatingActionButtonHawk extends StatelessWidget {
           labelColor: Colors.grey,
         ),
         HawkFabMenuItem(
-          label: (type == 'dataHarian') ? 'Pendapatan' : "Menerima",
+          label: (type == 'dataHarian') ? 'Pemasukan' : "Menerima",
           ontap: () {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
             // masukin tap progress disini
             // ScaffoldMessenger.of(context).showSnackBar(
             //   const SnackBar(content: Text('Menu 3 selected')),
             // );
+            // (type == 'dataHarian')
+            // ?
+            Navigator.pushNamed(
+              context,
+              '/home/transaksi',
+              arguments: TransaksiScreen(type: 'Pemasukan'),
+            );
           },
           icon: (type == 'dataHarian')
               ? Icon(Icons.badge)

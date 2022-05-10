@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sepran_clone/utils/styles.dart';
 
 class RekapScreen extends StatefulWidget {
   RekapScreen({Key? key}) : super(key: key);
@@ -48,7 +49,10 @@ class _RekapScreenState extends State<RekapScreen>
                 print('ismont : $isMonthly');
               },
               controller: _tabController,
-              indicatorColor: Colors.white,
+              indicatorColor: Colors.blue,
+              labelStyle: TextStyle(
+                color: Colors.amber,
+              ),
               tabs: const <Widget>[
                 Tab(text: 'Bulanan'),
                 Tab(text: 'Custom'),

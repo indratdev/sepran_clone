@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 
 class Styles {
+  static BorderRadius borderRadiusInput = BorderRadius.circular(5.0);
+
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
       primarySwatch: Colors.blue, //isDarkTheme ? Colors.black :  Colors.blue,
       primaryColor: isDarkTheme
           ? Colors.grey.shade700
           : Color(0xff4285F4), //Colors.black : Colors.blue,
+      tabBarTheme: isDarkTheme
+          ? TabBarTheme(
+              labelColor: Colors.white,
+              labelStyle: TextStyle(color: Colors.grey.shade700))
+          : TabBarTheme(
+              labelColor: Colors.black,
+              labelStyle: TextStyle(color: Color(0xff4285F4))),
       backgroundColor: isDarkTheme ? Colors.black : Color(0xffF1F5FB),
       indicatorColor: isDarkTheme ? Color(0xff0E1D36) : Color(0xffCBDCF8),
       // buttonColor: isDarkTheme ? Color(0xff3B3B3B) : Color(0xffF1F5FB),

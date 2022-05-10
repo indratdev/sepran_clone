@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "119532624591",
+    "project_id": "sepran-clone",
+    "storage_bucket": "sepran-clone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119532624591:android:18f0fb4fee27d166e835ba",
+        "android_client_info": {
+          "package_name": "com.example.sepran_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119532624591-0ff9k1mfjgddk6kqs5qur2n037kn1p3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW37YUA_YnRqIbNWK4jXNIA2qPRJk7qP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119532624591-0ff9k1mfjgddk6kqs5qur2n037kn1p3a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
