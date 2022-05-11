@@ -23,11 +23,18 @@ class floatingActionButtonHawk extends StatelessWidget {
           ontap: () {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
             (type == 'dataHarian')
-                ? Navigator.pushNamed(
+                ?
+                // Navigator.pushNamed(
+                //     context,
+                //     '/home/transaksi',
+                //     arguments: TransaksiScreen(type: 'Pengeluaran'),
+                //   )
+                Navigator.push(
                     context,
-                    '/home/transaksi',
-                    arguments: TransaksiScreen(type: 'Pengeluaran'),
-                  )
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          TransaksiScreen(type: 'Pengeluaran'),
+                    ))
                 : Navigator.pushNamed(context, '/home/transaksi');
           },
           icon: (type == 'dataHarian')
@@ -44,13 +51,18 @@ class floatingActionButtonHawk extends StatelessWidget {
             // ScaffoldMessenger.of(context).showSnackBar(
             //   const SnackBar(content: Text('Menu 3 selected')),
             // );
-            // (type == 'dataHarian')
-            // ?
-            Navigator.pushNamed(
-              context,
-              '/home/transaksi',
-              arguments: TransaksiScreen(type: 'Pemasukan'),
-            );
+            (type == 'dataHarian')
+                ? Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TransaksiScreen(type: 'Pemasukan'),
+                    ))
+                : Navigator.pushNamed(context, '/home/transaksi');
+            // Navigator.pushNamed(
+            //   context,
+            //   '/home/transaksi',
+            //   arguments: TransaksiScreen(type: 'Pemasukan'),
+            // );
           },
           icon: (type == 'dataHarian')
               ? Icon(Icons.badge)

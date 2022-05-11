@@ -15,7 +15,7 @@ class Routes {
     '/': (_) => SepranClone(),
     '/splash': (_) => SplashScreen(),
     '/home': (_) => HomeScreen(),
-    '/home/transaksi': (_) => TransaksiScreen(),
+    // '/home/transaksi': (_) => TransaksiScreen(type: 'Pengeluaran'),
     '/hutang': (_) => HutangScreen(),
     '/rekap': (_) => RekapScreen(),
     '/setting': (_) => SettingScreen(),

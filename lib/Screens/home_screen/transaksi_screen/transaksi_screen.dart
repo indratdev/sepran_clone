@@ -1,21 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:sepran_clone/utils/infoDevices.dart';
 import 'package:sepran_clone/utils/styles.dart';
 
 class TransaksiScreen extends StatelessWidget {
+  String type;
+
   TransaksiScreen({
     Key? key,
-    this.type = 'Pengeluaran',
+    required this.type,
   }) : super(key: key);
-
-  final String type;
 
   TextEditingController nominalController = TextEditingController();
   TextEditingController judulController = TextEditingController();
   TextEditingController kategoriController = TextEditingController();
   TextEditingController opsionalController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,74 +28,96 @@ class TransaksiScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: (type == 'Pengeluaran')
-            ? Text('Tambah Pengeluaran')
-            : Text('Tambah Pemasukan'),
+            ? const Text('Tambah Pengeluaran')
+            : const Text('Tambah Pemasukan'),
         centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              onTap: () {
-                showDatePicker(
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              TextField(
+                controller: dateController,
+                onTap: () {
+                  showDatePicker(
                     context: context,
                     initialDate: DateTime.now(),
                     firstDate: DateTime(2015, 8),
-                    lastDate: DateTime(2999, 8));
-              },
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
-                border:
-                    OutlineInputBorder(borderRadius: Styles.borderRadiusInput),
-                filled: true,
-                hintStyle: TextStyle(color: Colors.grey[800]),
-                hintText: "Type in your text",
-                fillColor: Colors.white70,
-              ),
-            ),
-            const SizedBox(height: 10),
-            inputTextfield(
-              inputController: nominalController,
-              hintText: 'Nominal',
-              icon: Icon(FontAwesomeIcons.calculator),
-            ),
-            const SizedBox(height: 10),
-            inputTextfield(
-              inputController: judulController,
-              hintText: 'Ketik disini untuk judul baru',
-              icon: Icon(FontAwesomeIcons.microphone),
-            ),
-            const SizedBox(height: 10),
-            inputTextfield(
-              inputController: kategoriController,
-              hintText: 'Ketik disini untuk kategori baru',
-              icon: Icon(FontAwesomeIcons.microphone),
-            ),
-            const SizedBox(height: 10),
-            inputTextfield(
-              inputController: opsionalController,
-              hintText: 'Kategori (optional)',
-              icon: Icon(FontAwesomeIcons.microphone),
-            ),
-            const SizedBox(height: 10),
-            Align(
-              alignment: Alignment.centerRight,
-              child: ElevatedButton(
-                onPressed: () {
-                  transaksi.add({
-                    'transactionDate': '2022-05-10',
-                    'amount': nominalController.text,
-                    'title': judulController.text,
+                    lastDate: DateTime(2999, 8),
+                  ).then((selectedDate) {
+                    if (selectedDate != null) {
+                      dateController.text =
+                          DateFormat('dd-MM-yyyy').format(selectedDate);
+                      print('selected date: $selectedDate');
+                    }
                   });
-                  nominalController.text = '';
-                  judulController.text = '';
                 },
-                child: const Text('Simpan'),
+                decoration: InputDecoration(
+                  enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey)),
+                  border: OutlineInputBorder(
+                      borderRadius: Styles.borderRadiusInput),
+                  filled: true,
+                  hintStyle: TextStyle(color: Colors.grey[800]),
+                  hintText: "Pilih Tanggal Transaksi",
+                  fillColor: Colors.white70,
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 10),
+              inputTextfield(
+                inputController: nominalController,
+                hintText: 'Nominal',
+                icon: const Icon(FontAwesomeIcons.calculator),
+              ),
+              const SizedBox(height: 10),
+              inputTextfield(
+                inputController: judulController,
+                hintText: 'Ketik disini untuk judul baru',
+                icon: const Icon(FontAwesomeIcons.microphone),
+              ),
+              const SizedBox(height: 10),
+              inputTextfield(
+                inputController: kategoriController,
+                hintText: 'Ketik disini untuk kategori baru',
+                icon: const Icon(FontAwesomeIcons.microphone),
+              ),
+              const SizedBox(height: 10),
+              inputTextfield(
+                inputController: opsionalController,
+                hintText: 'Keterangan (optional)',
+                icon: const Icon(FontAwesomeIcons.microphone),
+              ),
+              const SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    transaksi
+                        .doc(await InfoDevices.getDeviceInfo() +
+                            '_' +
+                            DateFormat('yyyy-mm-dd_hhmmss')
+                                .format(DateTime.now())
+                                .toString())
+                        .set({
+                      'transactionDate': dateController.text,
+                      'amount': nominalController.text,
+                      'title': judulController.text,
+                      'category': kategoriController.text,
+                      'descriptionOpsional': opsionalController.text
+                    });
+
+                    dateController.text = '';
+                    nominalController.text = '';
+                    judulController.text = '';
+                    kategoriController.text = '';
+                    opsionalController.text = '';
+                  },
+                  child: const Text('Simpan'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
