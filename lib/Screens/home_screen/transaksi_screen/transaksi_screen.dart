@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sepran_clone/utils/infoDevices.dart';
 import 'package:sepran_clone/utils/styles.dart';
 
 class TransaksiScreen extends StatelessWidget {
@@ -89,7 +90,7 @@ class TransaksiScreen extends StatelessWidget {
                   nominalController.text = '';
                   judulController.text = '';
                 },
-                child: Text('Simpan'),
+                child: const Text('Simpan'),
               ),
             ),
           ],
