@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sepran_clone/state_management/dark_bloc/darktheme_bloc.dart';
 import 'package:sepran_clone/state_management/pages_bloc/pages_bloc.dart';
 import 'package:sepran_clone/utils/dark_theme.dart';
+import 'package:sepran_clone/utils/infoDevices.dart';
 import 'package:sepran_clone/utils/routes.dart';
 import 'package:sepran_clone/utils/styles.dart';
 
@@ -12,6 +13,8 @@ void main() async {
   await Firebase.initializeApp();
 
   runApp(const MyApp());
+
+  InfoDevices().checkDeviceInfo();
 }
 
 class MyApp extends StatefulWidget {
