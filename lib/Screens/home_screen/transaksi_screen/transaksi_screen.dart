@@ -22,7 +22,7 @@ class TransaksiScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    CollectionReference transaksi = firestore.collection('transaction');
+    // CollectionReference transaksi = firestore.collection(await InfoDevices.getDeviceInfo());
 
     print('type : $type');
     return Scaffold(
@@ -54,6 +54,7 @@ class TransaksiScreen extends StatelessWidget {
                   });
                 },
                 decoration: InputDecoration(
+                  suffixIcon: const Icon(FontAwesomeIcons.calendarCheck),
                   enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey)),
                   border: OutlineInputBorder(
@@ -93,13 +94,18 @@ class TransaksiScreen extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: ElevatedButton(
                   onPressed: () async {
+                    CollectionReference transaksi =
+                        firestore.collection(await InfoDevices.getDeviceInfo());
                     transaksi
-                        .doc(await InfoDevices.getDeviceInfo() +
-                            '_' +
-                            DateFormat('yyyy-mm-dd_hhmmss')
-                                .format(DateTime.now())
-                                .toString())
+                        .doc(
+                            //await InfoDevices.getDeviceInfo() +
+                            // '_' +
+                            // DateFormat('yyyy-mm-dd_hhmmss')
+                            //     .format(DateTime.now())
+                            //     .toString()
+                            )
                         .set({
+                      'type': type,
                       'transactionDate': dateController.text,
                       'amount': nominalController.text,
                       'title': judulController.text,

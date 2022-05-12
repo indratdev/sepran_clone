@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sepran_clone/Resources/repository.dart';
 import 'package:sepran_clone/state_management/dark_bloc/darktheme_bloc.dart';
+import 'package:sepran_clone/state_management/dataharian_bloc/dataharian_bloc.dart';
 import 'package:sepran_clone/state_management/pages_bloc/pages_bloc.dart';
 import 'package:sepran_clone/utils/dark_theme.dart';
 import 'package:sepran_clone/utils/infoDevices.dart';
@@ -44,6 +46,9 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => DarkthemeBloc()..add(InitialChangeTheme()),
         ),
+        BlocProvider(
+            create: (context) => DataharianBloc(repo: Repository())
+              ..add(ReadDataHarianEvent(date: DateTime.now())))
       ],
       child: BlocBuilder<DarkthemeBloc, DarkthemeState>(
         builder: (context, state) {

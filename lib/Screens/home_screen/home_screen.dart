@@ -1,11 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:sepran_clone/Screens/home_screen/widgets/floatingActionButtonC.dart';
+import 'package:sepran_clone/state_management/dataharian_bloc/dataharian_bloc.dart';
+import 'package:sepran_clone/utils/infoDevices.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   DateTime? currentDate = DateTime.now();
+
 //   var currentDate = DateTime.fromMicrosecondsSinceEpoch(miliseconds * 1000); //DateTime.fromMicrosecondsSinceEpoch(miliseconds * 1000);
 // DateFormat(DateFormat.YEAR_MONTH_DAY, 'id').format(date.toUtc())
   DateTime? _selectedDate;
@@ -37,8 +42,35 @@ class HomeScreen extends StatelessWidget {
     return DateFormat.yMMMMEEEEd('id').format(now);
   }
 
+  Stream<QuerySnapshot> readData() {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    var deviceid = '19c9695c6d738bdd'; //InfoDevices().getDeviceId;
+    print('>>>>>>> deviceid : $deviceid');
+
+    var data = FirebaseFirestore.instance //firestore
+        .collection(deviceid)
+        .where('transactionDate',
+            isEqualTo: DateFormat('dd-MM-yyyy').format(currentDate!))
+        .snapshots();
+
+    return data;
+    // .get();
+
+    //     .then((event) {
+    //   for (var doc in event.docs) {
+    //     print("${doc.id} => ${doc.data()}");
+    //   }
+    // });
+  }
+
   @override
   Widget build(BuildContext context) {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    // var aaa = readData();
+    // print(aaa);
+
     return SafeArea(
       child: Scaffold(
         floatingActionButton: floatingActionButtonHawk(type: 'dataHarian'),
@@ -134,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text(
+                          const Text(
                             'Pemasukan',
                             // style: TextStyle(
                             //     color: Theme.of(context).primaryColorDark),
@@ -150,7 +182,7 @@ class HomeScreen extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text('Pengeluaran'),
+                          const Text('Pengeluaran'),
                           Text(
                             '0.00',
                             // style: TextStyle(
@@ -162,7 +194,7 @@ class HomeScreen extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text('Selisih'),
+                          const Text('Selisih'),
                           Text(
                             '0.00',
                             // style: TextStyle(
@@ -184,36 +216,82 @@ class HomeScreen extends StatelessWidget {
                 bottom: 0,
                 child: SizedBox(
                   child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(5),
-                        topRight: Radius.circular(5),
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(5),
+                          topRight: Radius.circular(5),
+                        ),
+                        color: Theme.of(context).primaryColorDark,
                       ),
-                      color: Theme.of(context).primaryColorDark,
-                    ),
-                    child: ListView.builder(
-                      itemCount: 200,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          leading: Icon(Icons.badge),
-                          title: Text('title'),
-                          subtitle: Text('Subtitle'),
-                          iconColor: Colors.red,
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Text('10.000'),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                size: 10,
-                                color: Colors.grey,
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  ),
+                      child: //Text('data')
+
+                          StreamBuilder<QuerySnapshot>(
+                        stream: readData(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasError) {
+                            return Text('Error');
+                          }
+                          if (snapshot.hasData) {
+                            // CollectionReference transaksi = firestore.collection(await InfoDevices.getDeviceInfo());
+                            return Column(
+                              children: snapshot.data!.docs
+                                  .map(
+                                    (e) => ListTile(
+                                        // title: e.data()['title'],
+                                        title: Text('data')
+                                        //Text((e.data() as dynamic)['title']),
+
+                                        ),
+                                  )
+                                  .toList(),
+                            );
+                          } else {
+                            return Text('Loading...');
+                          }
+                        },
+                      )
+                      //     BlocBuilder<DataharianBloc, DataharianState>(
+                      //   builder: (context, state) {
+                      //     if (state is LoadingDataHarian) {
+                      //       return Center(
+                      //           child: CircularProgressIndicator.adaptive());
+                      //     }
+                      //     if (state is ErrorDataHarianState) {
+                      //       return Center(child: Text(state.errorDesc));
+                      //     }
+                      //     if (state is ReadDataHarianSuccess) {
+                      //       var data = state.result;
+                      //       // print(data.map((event) => print(event.docs.length.)));
+                      //       return ListView.builder(
+                      //         itemCount: 5,
+                      //         itemBuilder: (context, index) {
+                      //           return ListTile(
+                      //             leading: Icon(Icons.badge),
+                      //             title: Text('title'),
+                      //             subtitle: Text('Subtitle'),
+                      //             iconColor: Colors.red,
+                      //             trailing: Row(
+                      //               mainAxisSize: MainAxisSize.min,
+                      //               children: <Widget>[
+                      //                 Text('10.000'),
+                      //                 Icon(
+                      //                   Icons.arrow_forward_ios,
+                      //                   size: 10,
+                      //                   color: Colors.grey,
+                      //                 )
+                      //               ],
+                      //             ),
+                      //           );
+                      //         },
+                      //       );
+                      //     } else {
+                      //       return Container(
+                      //         child: Text('gagal'),
+                      //       );
+                      //     }
+                      //   },
+                      // ),
+                      ),
                 ),
               ),
               // end container detail item
