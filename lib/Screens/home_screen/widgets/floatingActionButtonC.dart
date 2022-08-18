@@ -23,13 +23,7 @@ class floatingActionButtonHawk extends StatelessWidget {
           ontap: () {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
             (type == 'dataHarian')
-                ?
-                // Navigator.pushNamed(
-                //     context,
-                //     '/home/transaksi',
-                //     arguments: TransaksiScreen(type: 'Pengeluaran'),
-                //   )
-                Navigator.push(
+                ? Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) =>

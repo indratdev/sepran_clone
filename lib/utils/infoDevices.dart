@@ -40,3 +40,6 @@ class InfoDevices {
     (resultDevice == '') ? _getId() : null;
   }
 }
+
+
+// <a href='https://www.freepik.com/photos/paint-texture'>Paint texture photo created by rawpixel.com - www.freepik.com</a> banner wallpaper
