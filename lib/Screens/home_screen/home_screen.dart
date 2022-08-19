@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-import 'package:sepran_clone/Screens/home_screen/widgets/floatingActionButtonC.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -40,31 +38,31 @@ class HomeScreen extends StatelessWidget {
     return DateFormat.yMMMMEEEEd('id').format(now);
   }
 
-  Stream<QuerySnapshot> readData() {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
+  // Stream<QuerySnapshot> readData() {
+  //   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-    var deviceid = '19c9695c6d738bdd'; //InfoDevices().getDeviceId;
-    print('>>>>>>> deviceid : $deviceid');
+  //   var deviceid = '19c9695c6d738bdd'; //InfoDevices().getDeviceId;
+  //   print('>>>>>>> deviceid : $deviceid');
 
-    var data = FirebaseFirestore.instance //firestore
-        .collection(deviceid)
-        .where('transactionDate',
-            isEqualTo: DateFormat('dd-MM-yyyy').format(currentDate!))
-        .snapshots();
+  //   var data = FirebaseFirestore.instance //firestore
+  //       .collection(deviceid)
+  //       .where('transactionDate',
+  //           isEqualTo: DateFormat('dd-MM-yyyy').format(currentDate!))
+  //       .snapshots();
 
-    return data;
-    // .get();
+  //   return data;
+  //   // .get();
 
-    //     .then((event) {
-    //   for (var doc in event.docs) {
-    //     print("${doc.id} => ${doc.data()}");
-    //   }
-    // });
-  }
+  //   //     .then((event) {
+  //   //   for (var doc in event.docs) {
+  //   //     print("${doc.id} => ${doc.data()}");
+  //   //   }
+  //   // });
+  // }
 
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    // FirebaseFirestore firestore = FirebaseFirestore.instance;
 
     // var aaa = readData();
     // print(aaa);

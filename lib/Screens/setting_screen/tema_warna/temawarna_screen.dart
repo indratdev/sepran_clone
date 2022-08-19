@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sepran_clone/state_management/dark_bloc/darktheme_bloc.dart';
 import 'package:sepran_clone/utils/dark_theme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class TemaWarnaSceen extends StatefulWidget {
   TemaWarnaSceen({Key? key}) : super(key: key);
@@ -12,29 +11,29 @@ class TemaWarnaSceen extends StatefulWidget {
 }
 
 class _TemaWarnaSceenState extends State<TemaWarnaSceen> {
-  DarkThemePreference darkPref = DarkThemePreference();
-  final DarkThemeProvider themeData = DarkThemeProvider();
+  // DarkThemePreference darkPref = DarkThemePreference();
+  // final DarkThemeProvider themeData = DarkThemeProvider();
   bool? _warna;
 
   @override
   void initState() {
     // _warna = darkPref.getTheme();/
-    getThema();
+    // getThema();
 
     super.initState();
   }
 
-  getThema() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? value = prefs.getBool('THEMESTATUS');
+  // getThema() async {
+  //   // SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   // bool? value = prefs.getBool('THEMESTATUS');
 
-    if (value != null) {
-      _warna = value;
-    } else {
-      _warna = false;
-    }
-    setState(() {});
-  }
+  //   if (value != null) {
+  //     _warna = value;
+  //   } else {
+  //     _warna = false;
+  //   }
+  //   setState(() {});
+  // }
 
   @override
   Widget build(BuildContext context) {

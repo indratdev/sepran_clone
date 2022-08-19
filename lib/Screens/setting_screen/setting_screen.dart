@@ -10,7 +10,7 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Setting'),
+        title: const Text('Pengaturan'),
         centerTitle: true,
       ),
       body: Column(
@@ -19,7 +19,8 @@ class SettingScreen extends StatelessWidget {
             flex: 7,
             child: Container(
               // color: Colors.grey,
-              child: ListView.builder(
+              child: ListView.separated(
+                separatorBuilder: (context, index) => const Divider(),
                 itemCount: mSetting.getListSettings.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(

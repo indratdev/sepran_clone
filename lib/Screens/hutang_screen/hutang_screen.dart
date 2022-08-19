@@ -46,7 +46,7 @@ class HutangScreen extends StatelessWidget {
         //   title: Text('Hutang'),
         //   centerTitle: true,
         // ),
-        floatingActionButton: floatingActionButtonHawk(type: 'hutang'),
+        // floatingActionButton: floatingActionButtonHawk(type: 'hutang'),
         body: Container(
           color: Theme.of(context).primaryColorDark,
           child: Stack(

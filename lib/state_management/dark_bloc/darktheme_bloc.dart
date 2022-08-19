@@ -7,35 +7,35 @@ part 'darktheme_state.dart';
 
 class DarkthemeBloc extends Bloc<DarkthemeEvent, DarkthemeState> {
   DarkthemeBloc() : super(DarkthemeInitial()) {
-    final DarkThemeProvider themeData = DarkThemeProvider();
+    // final DarkThemeProvider themeData = DarkThemeProvider();
 
-    on<ChangeThemeToDark>((event, emit) {
-      var result = event.value;
+    // on<ChangeThemeToDark>((event, emit) {
+    //   var result = event.value;
 
-      var _thema = themeData.setDarkTheme = result;
+    //   var _thema = themeData.setDarkTheme = result;
 
-      // set preferecenya
-      // (result == WarnaTema.light)
-      //     ? darkPrefs.setDartTheme(true)
-      //     : darkPrefs.setDartTheme(false);
+    //   // set preferecenya
+    //   // (result == WarnaTema.light)
+    //   //     ? darkPrefs.setDartTheme(true)
+    //   //     : darkPrefs.setDartTheme(false);
 
-      // if (result == false) {
-      //   darkPrefs.setDartTheme(false);
-      //   _thema = false;
-      // } else {
-      //   darkPrefs.setDartTheme(true);
-      //   _thema = true;
-      // }
+    //   // if (result == false) {
+    //   //   darkPrefs.setDartTheme(false);
+    //   //   _thema = false;
+    //   // } else {
+    //   //   darkPrefs.setDartTheme(true);
+    //   //   _thema = true;
+    //   // }
 
-      // print('ganti warna');
-      // print(' print --> ${themeData.getDarkTheme}');
-      emit(ChangeThemaDarkState(theme: (_thema)));
-    });
+    //   // print('ganti warna');
+    //   // print(' print --> ${themeData.getDarkTheme}');
+    //   emit(ChangeThemaDarkState(theme: (_thema)));
+    // });
 
-    on<InitialChangeTheme>((event, emit) async {
-      themeData.setDarkTheme = await themeData.darkThemePreference.getTheme();
-      final result = themeData.getDarkTheme;
-      emit(DarkthemeInitial(toDark: result));
-    });
+    // on<InitialChangeTheme>((event, emit) async {
+    //   themeData.setDarkTheme = await themeData.darkThemePreference.getTheme();
+    //   final result = themeData.getDarkTheme;
+    //   emit(DarkthemeInitial(toDark: result));
+    // });
   }
 }

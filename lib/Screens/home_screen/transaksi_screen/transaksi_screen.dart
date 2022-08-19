@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -21,7 +20,7 @@ class TransaksiScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    // FirebaseFirestore firestore = FirebaseFirestore.instance;
     // CollectionReference transaksi = firestore.collection(await InfoDevices.getDeviceInfo());
 
     print('type : $type');
@@ -94,24 +93,24 @@ class TransaksiScreen extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: ElevatedButton(
                   onPressed: () async {
-                    CollectionReference transaksi =
-                        firestore.collection(await InfoDevices.getDeviceInfo());
-                    transaksi
-                        .doc(
-                            //await InfoDevices.getDeviceInfo() +
-                            // '_' +
-                            // DateFormat('yyyy-mm-dd_hhmmss')
-                            //     .format(DateTime.now())
-                            //     .toString()
-                            )
-                        .set({
-                      'type': type,
-                      'transactionDate': dateController.text,
-                      'amount': nominalController.text,
-                      'title': judulController.text,
-                      'category': kategoriController.text,
-                      'descriptionOpsional': opsionalController.text
-                    });
+                    // CollectionReference transaksi =
+                    //     firestore.collection(await InfoDevices.getDeviceInfo());
+                    // transaksi
+                    //     .doc(
+                    //         //await InfoDevices.getDeviceInfo() +
+                    //         // '_' +
+                    //         // DateFormat('yyyy-mm-dd_hhmmss')
+                    //         //     .format(DateTime.now())
+                    //         //     .toString()
+                    //         )
+                    //     .set({
+                    //   'type': type,
+                    //   'transactionDate': dateController.text,
+                    //   'amount': nominalController.text,
+                    //   'title': judulController.text,
+                    //   'category': kategoriController.text,
+                    //   'descriptionOpsional': opsionalController.text
+                    // });
 
                     dateController.text = '';
                     nominalController.text = '';
