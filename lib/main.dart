@@ -1,13 +1,8 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sepran_clone/Resources/repository.dart';
-import 'package:sepran_clone/state_management/dark_bloc/darktheme_bloc.dart';
-import 'package:sepran_clone/state_management/pages_bloc/pages_bloc.dart';
-import 'package:sepran_clone/utils/dark_theme.dart';
-import 'package:sepran_clone/utils/infoDevices.dart';
-import 'package:sepran_clone/utils/routes.dart';
-import 'package:sepran_clone/utils/styles.dart';
+import 'package:sqflite/sqflite.dart';
+
+import 'utils/routes.dart';
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();

@@ -8,7 +8,7 @@ import 'package:sepran_clone/Screens/setting_screen/setting_screen.dart';
 import 'package:sepran_clone/Screens/setting_screen/tema_warna/temawarna_screen.dart';
 import 'package:sepran_clone/Screens/splash_screen.dart';
 
-import '../Screens/home_screen/transaksi_screen/transaksi_screen.dart';
+import '../Screens/setting_screen/category_screen/category_screen.dart';
 
 class Routes {
   Map<String, WidgetBuilder> getRoutes = {
@@ -21,5 +21,6 @@ class Routes {
     '/setting': (_) => SettingScreen(),
     '/setting/backupData': (_) => BackupDataScreen(),
     '/setting/warnaTema': (_) => TemaWarnaSceen(),
+    '/setting/kategori': (_) => CategoryScreen(),
   };
 }

@@ -25,7 +25,7 @@ class SettingScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context,
+                      Navigator.of(context, rootNavigator: true).pushNamed(
                           mSetting.getListSettings[index].routeSetting);
                     },
                     child: ListTile(

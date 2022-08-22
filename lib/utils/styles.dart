@@ -8,7 +8,8 @@ class Styles {
       primarySwatch: Colors.blue, //isDarkTheme ? Colors.black :  Colors.blue,
       primaryColor: isDarkTheme
           ? Colors.grey.shade700
-          : Color(0xff4285F4), //Colors.black : Colors.blue,
+          // : Color(0xff4285F4), //Colors.black : Colors.blue,
+          : Colors.white, //Colors.black : Colors.blue,
       tabBarTheme: isDarkTheme
           ? TabBarTheme(
               labelColor: Colors.white,
