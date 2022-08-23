@@ -2,19 +2,19 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'category_model.g.dart';
 
-final String tableCategory = 'category_table';
-
 @JsonSerializable()
 class CategoryModel {
   int? id;
+  bool isIncome;
   String name, iconName;
   bool isDefault;
   bool isActive;
-  DateTime? createdTime;
-  DateTime? modifieldTime;
+  String? createdTime;
+  String? modifieldTime;
 
   CategoryModel({
     this.id,
+    this.isIncome = true,
     required this.name,
     required this.iconName,
     this.isDefault = false,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_local.dart';
+import 'package:sepran_clone/Resources/sqldatabases.dart';
+import 'package:sqflite/sqflite.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -9,8 +10,12 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  SqlDatabase databaseinstanse = SqlDatabase.instance;
+
   @override
   void initState() {
+    databaseinstanse.database;
+
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     });
