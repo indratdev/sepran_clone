@@ -63,44 +63,42 @@ class SqlDatabase {
       )
       ''');
 
-    // default category value
+    // insert default data
+    _configureDB(db);
   }
 
-  Future insertCategoryDefault() async {
-    final db = await instance.database;
-    if (db != null) {
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (TRUE, 'GAJI', 'FontAwesomeIcons.sackDollar', 1, 1, DateTime.now().toString(), ''); ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (TRUE, 'TABUNGAN', 'FontAwesomeIcons.piggyBank', 1, 1, DateTime.now().toString(), ''); ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (TRUE, 'DEPOSITO', 'FontAwesomeIcons.buildingColumns', 1, 1, DateTime.now().toString(), '');    ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (TRUE, 'PENDAPATAN LAINNYA', 'FontAwesomeIcons.boxesStacked', 1, 1, DateTime.now().toString(), '');    ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (FALSE, 'MAKANAN & MINUMAN', 'FontAwesomeIcons.champagneGlasses', 1, 1, DateTime.now().toString(), '');     ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (FALSE, 'TRANSPORTASI', 'FontAwesomeIcons.car', 1, 1, DateTime.now().toString(), '');     ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (FALSE, 'RENTAL', 'FontAwesomeIcons.houseCrack', 1, 1, DateTime.now().toString(), '');     ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (FALSE, 'PEMBAYARAN', 'FontAwesomeIcons.fileInvoiceDollar', 1, 1, DateTime.now().toString(), '');     ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (FALSE, 'ASURANSI', 'FontAwesomeIcons.handHoldingHeart', 1, 1, DateTime.now().toString(), '');     ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (FALSE, 'PEMELIHARAAN KENDARAAN', 'FontAwesomeIcons.screwdriverWrench', 1, 1, DateTime.now().toString(), '');     ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (FALSE, 'PENGELUARAN LAINNYA', 'FontAwesomeIcons.boxesStacked', 1, 1, DateTime.now().toString(), '');     ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (FALSE, 'FITNESS', 'FontAwesomeIcons.dumbbell', 1, 1, DateTime.now().toString(), '');     ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (FALSE, 'MAKEUP', 'FontAwesomeIcons.heart', 1, 1, DateTime.now().toString(), '');     ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (FALSE, 'HADIAH', 'FontAwesomeIcons.gifts', 1, 1, DateTime.now().toString(), '');     ''');
-      await db.rawInsert(
-          ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (FALSE, 'REKREASI', 'FontAwesomeIcons.umbrellaBeach', 1, 1, DateTime.now().toString(), '');     ''');
-    }
-    // return result;
+  Future _configureDB(Database db) async {
+    var createTime = DateTime.now().toString();
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'GAJI', 'FontAwesomeIcons.sackDollar', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'TABUNGAN', 'FontAwesomeIcons.piggyBank', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'DEPOSITO', 'FontAwesomeIcons.buildingColumns', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'PENDAPATAN LAINNYA', 'FontAwesomeIcons.boxesStacked', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'MAKANAN & MINUMAN', 'FontAwesomeIcons.champagneGlasses', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'TRANSPORTASI', 'FontAwesomeIcons.car', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'RENTAL', 'FontAwesomeIcons.houseCrack', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'PEMBAYARAN', 'FontAwesomeIcons.fileInvoiceDollar', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'ASURANSI', 'FontAwesomeIcons.handHoldingHeart', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'PEMELIHARAAN KENDARAAN', 'FontAwesomeIcons.screwdriverWrench', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'PENGELUARAN LAINNYA', 'FontAwesomeIcons.boxesStacked', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'FITNESS', 'FontAwesomeIcons.dumbbell', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'MAKEUP', 'FontAwesomeIcons.heart', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'HADIAH', 'FontAwesomeIcons.gifts', 1, 1, '$createTime', '');       ''');
+    await db.rawInsert(
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'REKREASI', 'FontAwesomeIcons.umbrellaBeach', 1, 1, '$createTime', '');       ''');
   }
 
   Future closeDB() async {
@@ -133,13 +131,18 @@ class SqlDatabase {
   }
 
   //read all
-  Future<List<CategoryModel>> readAllCategory() async {
+  Future<List<CategoryModel>> readCategory(int isIncome) async {
     final db = await instance.database;
     // const orderBy = 'createdTime ASC';
 
     if (db != null) {
       // final result = await db.query(tableNotes, orderBy: orderBy);
-      final result = await db.query(tableCategory);
+      // final result = await db.query(tableCategory);
+      final result = (isIncome == 1)
+          ? await db.rawQuery(
+              ''' select isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime from $tableCategory where isIncome = 1; ''')
+          : await db.rawQuery(
+              ''' select isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime from $tableCategory where isIncome = 0; ''');
       print('===> $result');
       return result.map((e) => CategoryModel.fromJson(e)).toList();
     } else {

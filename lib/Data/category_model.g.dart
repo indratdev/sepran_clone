@@ -9,11 +9,11 @@ part of 'category_model.dart';
 CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
     CategoryModel(
       id: json['id'] as int?,
-      isIncome: json['isIncome'] as bool? ?? true,
+      isIncome: json['isIncome'] as int? ?? 1,
       name: json['name'] as String,
       iconName: json['iconName'] as String,
-      isDefault: json['isDefault'] as bool? ?? false,
-      isActive: json['isActive'] as bool? ?? true,
+      isDefault: json['isDefault'] as int? ?? 0,
+      isActive: json['isActive'] as int? ?? 1,
       createdTime: json['createdTime'] as String?,
       modifieldTime: json['modifieldTime'] as String?,
     );

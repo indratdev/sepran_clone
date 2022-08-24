@@ -1,5 +1,7 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sepran_clone/state_management/category_bloc/category_bloc.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'utils/routes.dart';
@@ -32,11 +34,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: Routes().getRoutes,
-      initialRoute: '/splash',
-      // theme: Styles.themeData(themeData.getDarkTheme, context),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              CategoryBloc()..add(ViewCategoryEvent(IsIncome: 1)),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: Routes().getRoutes,
+        initialRoute: '/splash',
+        // theme: Styles.themeData(themeData.getDarkTheme, context),
+      ),
     );
   }
 }

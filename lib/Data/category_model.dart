@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'category_model.g.dart';
@@ -5,20 +6,21 @@ part 'category_model.g.dart';
 @JsonSerializable()
 class CategoryModel {
   int? id;
-  bool isIncome;
-  String name, iconName;
-  bool isDefault;
-  bool isActive;
+  int isIncome;
+  String name;
+  String iconName;
+  int isDefault;
+  int isActive;
   String? createdTime;
   String? modifieldTime;
 
   CategoryModel({
     this.id,
-    this.isIncome = true,
+    this.isIncome = 1,
     required this.name,
     required this.iconName,
-    this.isDefault = false,
-    this.isActive = true,
+    this.isDefault = 0,
+    this.isActive = 1,
     this.createdTime,
     this.modifieldTime,
   });
