@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:sepran_clone/state_management/category_bloc/category_bloc.dart';
+import 'package:sepran_clone/utils/customIcon.dart';
 
 import '../../../Data/category_model.dart';
 
@@ -100,10 +102,12 @@ class CategoryScreen extends StatelessWidget {
                   child: ListView.builder(
                     itemCount: datas.length,
                     itemBuilder: (context, index) {
-                      var icons = datas[index].iconName as IconData;
-                      print(icons);
+                      // var iconss = (datas[index].iconName);
+
+                      // print(iconss);
                       return ListTile(
-                        leading: Icon(icons),
+                        // IconDataBrands(0xf17b);
+                        // leading: Icon(IconDataBrands(iconss)),
                         title: Text(datas[index].name),
                       );
                     },

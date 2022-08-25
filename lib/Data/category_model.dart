@@ -8,7 +8,7 @@ class CategoryModel {
   int? id;
   int isIncome;
   String name;
-  String iconName;
+  // int iconName;
   int isDefault;
   int isActive;
   String? createdTime;
@@ -18,7 +18,7 @@ class CategoryModel {
     this.id,
     this.isIncome = 1,
     required this.name,
-    required this.iconName,
+    // this.iconName = 0,
     this.isDefault = 0,
     this.isActive = 1,
     this.createdTime,
