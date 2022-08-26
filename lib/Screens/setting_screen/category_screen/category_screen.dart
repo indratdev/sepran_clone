@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:sepran_clone/state_management/category_bloc/category_bloc.dart';
-import 'package:sepran_clone/utils/customIcon.dart';
 
 import '../../../Data/category_model.dart';
 
@@ -19,8 +18,11 @@ class CategoryScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Kategori"),
       ),
-      floatingActionButton:
-          FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/setting/kategori/add');
+          },
+          child: const Icon(Icons.add)),
       body: Column(
         children: <Widget>[
           Flexible(
@@ -82,6 +84,7 @@ class CategoryScreen extends StatelessWidget {
               if (state is CategorySuccess) {
                 datas = state.category;
                 isPenerimaan = (state.isIncome == 1) ? true : false;
+                print("isPenerimaan : $isPenerimaan");
               }
             },
             builder: (context, state) {
@@ -102,12 +105,12 @@ class CategoryScreen extends StatelessWidget {
                   child: ListView.builder(
                     itemCount: datas.length,
                     itemBuilder: (context, index) {
-                      // var iconss = (datas[index].iconName);
+                      var iconss = (datas[index].iconName);
 
                       // print(iconss);
                       return ListTile(
                         // IconDataBrands(0xf17b);
-                        // leading: Icon(IconDataBrands(iconss)),
+                        leading: Icon(FontAwesomeIcons.createDoc[iconss]),
                         title: Text(datas[index].name),
                       );
                     },

@@ -15,7 +15,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
       try {
         emit(CategoryLoading());
         var result = await dbprovider.readCategory(event.IsIncome);
-        print(result);
+        // print(result);
         emit(CategorySuccess(category: result, isIncome: event.IsIncome));
       } catch (e) {
         print(e);

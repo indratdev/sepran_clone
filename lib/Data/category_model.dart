@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'category_model.g.dart';
@@ -8,7 +7,7 @@ class CategoryModel {
   int? id;
   int isIncome;
   String name;
-  // int iconName;
+  String iconName;
   int isDefault;
   int isActive;
   String? createdTime;
@@ -18,7 +17,7 @@ class CategoryModel {
     this.id,
     this.isIncome = 1,
     required this.name,
-    // this.iconName = 0,
+    this.iconName = "",
     this.isDefault = 0,
     this.isActive = 1,
     this.createdTime,

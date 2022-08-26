@@ -55,7 +55,7 @@ class SqlDatabase {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       isIncome INTEGER,
       name TEXT NOT NULL,
-      iconName INTEGER,
+      iconName TEXT NULL,
       isActive INTEGER,
       isDefault INTEGER,
       createdTime TEXT NULL,
@@ -70,35 +70,35 @@ class SqlDatabase {
   Future _configureDB(Database db) async {
     var createTime = DateTime.now().toString();
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'GAJI', '0xf81d', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'GAJI', 'sackDollar', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'TABUNGAN', '0xf4d3', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'TABUNGAN', 'piggyBank', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'DEPOSITO', '0xf19c', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'DEPOSITO', 'buildingColumns', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'PENDAPATAN LAINNYA', '0xf468', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (1, 'PENDAPATAN LAINNYA', 'boxesStacked', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'MAKANAN & MINUMAN', '0xf79f', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'MAKANAN & MINUMAN', 'champagneGlasses', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'TRANSPORTASI', '0xf1b9', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'TRANSPORTASI', 'car', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'RENTAL', '0xf85b', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'RENTAL', 'cars', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'PEMBAYARAN', '0xf571', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'PEMBAYARAN', 'fileInvoiceDollar', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'ASURANSI', '0xf4be', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'ASURANSI', 'handHoldingHeart', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'PEMELIHARAAN KENDARAAN', '0xf7d9', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'PEMELIHARAAN KENDARAAN', 'screwdriverWrench', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'PENGELUARAN LAINNYA', '0xf468', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'PENGELUARAN LAINNYA', 'boxesStacked', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'FITNESS', '0xf44b', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'FITNESS', 'dumbbell', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'MAKEUP', '0xf004', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'MAKEUP', 'heart', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'HADIAH', '0xf06b', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'HADIAH', 'gifts', 1, 1, '$createTime', '');       ''');
     await db.rawInsert(
-        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'REKREASI', '0xf5ca', 1, 1, '$createTime', '');       ''');
+        ''' INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime) VALUES (0, 'REKREASI', 'umbrellaBeach', 1, 1, '$createTime', '');       ''');
   }
 
   Future closeDB() async {
@@ -116,11 +116,12 @@ class SqlDatabase {
     int result = 0;
     if (db != null) {
       result = await db.rawInsert('''
-      INSERT INTO $tableCategory (name,isActive, isDefault, createdTime, modifieldTime)
+      INSERT INTO $tableCategory (isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime)
       VALUES
       (
-        '${category.name}'
-        
+        '${category.isIncome}'
+        ,'${category.name}'
+        ,'${category.iconName}'
         ,'${category.isActive}'
         ,'${category.isDefault}'
         ,'${category.createdTime}'
@@ -144,7 +145,7 @@ class SqlDatabase {
               ''' select isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime from $tableCategory where isIncome = 1; ''')
           : await db.rawQuery(
               ''' select isIncome, name, iconName,isActive, isDefault, createdTime, modifieldTime from $tableCategory where isIncome = 0; ''');
-      print('===> $result');
+      // print('===> $result');
       return result.map((e) => CategoryModel.fromJson(e)).toList();
     } else {
       throw Exception('DB is NULL');
