@@ -14,3 +14,5 @@ class ViewCategoryEvent extends CategoryEvent {
     required this.IsIncome,
   });
 }
+
+class GetAllCategoryIcon extends CategoryEvent {}

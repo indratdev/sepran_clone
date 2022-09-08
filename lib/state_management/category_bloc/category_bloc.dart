@@ -19,7 +19,12 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
         emit(CategorySuccess(category: result, isIncome: event.IsIncome));
       } catch (e) {
         print(e);
+        emit(CategoryFailure(errorMessage: "GAGAL"));
       }
+    });
+
+    on<GetAllCategoryIcon>((event, emit) {
+      
     });
   }
 }
