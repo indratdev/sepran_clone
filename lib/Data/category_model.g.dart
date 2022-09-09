@@ -29,3 +29,18 @@ Map<String, dynamic> _$CategoryModelToJson(CategoryModel instance) =>
       'createdTime': instance.createdTime,
       'modifieldTime': instance.modifieldTime,
     };
+
+CategoryMasterModel _$CategoryMasterModelFromJson(Map<String, dynamic> json) =>
+    CategoryMasterModel(
+      id: json['id'] as int?,
+      name: json['name'] as String,
+      iconName: json['iconName'] as String? ?? "",
+    );
+
+Map<String, dynamic> _$CategoryMasterModelToJson(
+        CategoryMasterModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'iconName': instance.iconName,
+    };

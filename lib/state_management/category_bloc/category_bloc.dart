@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:sepran_clone/Resources/sqldatabases.dart';
+import 'package:sepran_clone/utils/customIcon.dart';
 
 import '../../Data/category_model.dart';
 
@@ -23,8 +26,16 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
       }
     });
 
-    on<GetAllCategoryIcon>((event, emit) {
-      
+    on<ReadAllCategoryMaster>((event, emit) async {
+      emit(LoadingReadAllCategoryMaster());
+      try {
+        var result = await dbprovider.readAllCategoryMaster();
+        // print("result::: $result");
+        emit(SuccessReadAllCategoryMaster(result: result));
+      } catch (e) {
+        print(e.toString());
+        emit(FailureReadAllCategoryMaster(errorMessage: "Gagal Memuat Icon"));
+      }
     });
   }
 }

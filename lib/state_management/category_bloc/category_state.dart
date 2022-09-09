@@ -7,19 +7,24 @@ abstract class CategoryState extends Equatable {
   List<Object> get props => [];
 }
 
-class CategoryInitial extends CategoryState {}
-
-class CategoryLoading extends CategoryState {}
-
-class CategoryFailure extends CategoryState {
+abstract class CategoryFailureGeneral extends CategoryState {
   String errorMessage;
 
-  CategoryFailure({
+  CategoryFailureGeneral({
     required this.errorMessage,
   });
 
   @override
   List<Object> get props => [errorMessage];
+}
+
+class CategoryInitial extends CategoryState {}
+
+class CategoryLoading extends CategoryState {}
+
+class CategoryFailure extends CategoryFailureGeneral {
+  CategoryFailure({required String errorMessage})
+      : super(errorMessage: errorMessage);
 }
 
 class CategorySuccess extends CategoryState {
@@ -33,4 +38,23 @@ class CategorySuccess extends CategoryState {
 
   @override
   List<Object> get props => [category, isIncome];
+}
+
+// getcategory icon
+class LoadingReadAllCategoryMaster extends CategoryState {}
+
+class FailureReadAllCategoryMaster extends CategoryFailureGeneral {
+  FailureReadAllCategoryMaster({required String errorMessage})
+      : super(errorMessage: errorMessage);
+}
+
+class SuccessReadAllCategoryMaster extends CategoryState {
+  List<CategoryMasterModel> result;
+
+  SuccessReadAllCategoryMaster({
+    required this.result,
+  });
+
+  @override
+  List<Object> get props => [result];
 }

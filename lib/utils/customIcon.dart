@@ -2,6 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomIcon extends FontAwesomeIcons {
+  String name;
+  IconData iconIcon;
+
+  CustomIcon({
+    this.name = "piggyBank",
+    this.iconIcon = FontAwesomeIcons.piggyBank,
+  });
+
+  CustomIcon.fromJson(Map<String, dynamic> json)
+      : name = json["name"],
+        iconIcon = json["iconIcon"];
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'iconIcon': iconIcon,
+    };
+  }
+
   Map<String, IconData> iconsMap = {
     'add_shopping_cart': Icons.add_shopping_cart,
     'calendar_view_week_rounded': Icons.calendar_view_day_rounded,
@@ -10,7 +29,7 @@ class CustomIcon extends FontAwesomeIcons {
   };
 
   static const createDoc = {
-    'fiveHundredPx': IconDataBrands(0xf26e),
+    // 'fiveHundredPx': IconDataBrands(0xf26e),
     'accessibleIcon': IconDataBrands(0xf368),
     'sackDollar': FontAwesomeIcons.sackDollar,
     'piggyBank': FontAwesomeIcons.piggyBank,
@@ -552,3 +571,5 @@ class CustomIcon extends FontAwesomeIcons {
     'fa-gas-pump': IconDataBrands(0xf52f),
   };
 }
+
+// <div>Icons made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div><div>Icons made by <a href="https://www.flaticon.com/authors/dimitry-miroliubov" title="Dimitry Miroliubov">Dimitry Miroliubov</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div><div>Icons made by <a href="https://www.flaticon.com/authors/geotatah" title="geotatah">geotatah</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div><div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div><div>Icons made by <a href="https://www.flaticon.com/authors/uniconlabs" title="Uniconlabs">Uniconlabs</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div><div>Icons made by <a href="https://www.flaticon.com/authors/muhammad-usman" title="Muhammad_Usman">Muhammad_Usman</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

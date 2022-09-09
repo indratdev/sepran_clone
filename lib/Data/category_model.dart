@@ -30,6 +30,23 @@ class CategoryModel {
   Map<String, dynamic> toJson() => _$CategoryModelToJson(this);
 }
 
+@JsonSerializable()
+class CategoryMasterModel {
+  int? id;
+  String name;
+  String iconName;
+
+  CategoryMasterModel({
+    this.id,
+    required this.name,
+    this.iconName = "",
+  });
+
+  factory CategoryMasterModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryMasterModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CategoryMasterModelToJson(this);
+}
 
 //pengeluaran
 // Makanan Primer (Makanan rumah sehari-hari)

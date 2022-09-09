@@ -15,4 +15,4 @@ class ViewCategoryEvent extends CategoryEvent {
   });
 }
 
-class GetAllCategoryIcon extends CategoryEvent {}
+class ReadAllCategoryMaster extends CategoryEvent {}

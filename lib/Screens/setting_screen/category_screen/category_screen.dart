@@ -22,6 +22,7 @@ class CategoryScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.pushNamed(context, '/setting/kategori/add');
+            BlocProvider.of<CategoryBloc>(context).add(ReadAllCategoryMaster());
           },
           child: const Icon(Icons.add)),
       body: BlocConsumer<CategoryBloc, CategoryState>(
